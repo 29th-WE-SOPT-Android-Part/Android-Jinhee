@@ -32,6 +32,16 @@ class SignUpActivity : AppCompatActivity() {
                 Toast.makeText(this@SignUpActivity, "입력되지 않은 정보가 있습니다.", Toast.LENGTH_SHORT)
                     .show()
             } else {
+                val intent = Intent(this@SignUpActivity, HomeActivity::class.java)
+                intent.putExtra("userName", userName.toString())
+                    .putExtra("userId", userId.toString())
+                    .putExtra("userPw", userPw.toString())
+
+                setResult(
+                    RESULT_OK,
+                    intent
+                )   //setResult() 메소드로 결과를 저장 -> 성공 : RESULT_OK, 실패 : RESULT_CANCEL
+
                 finish()
             }
         }
