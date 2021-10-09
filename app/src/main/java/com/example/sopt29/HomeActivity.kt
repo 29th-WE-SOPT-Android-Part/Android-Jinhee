@@ -1,5 +1,7 @@
 package com.example.sopt29
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -15,7 +17,14 @@ class HomeActivity : AppCompatActivity() {
 
         Log.d(CURRENT_ACTIVITY, "Called onStart")
 
+        goGitHub()
+    }
 
+    fun goGitHub(){
+        binding.btnGoGithub.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/HJinhee"))
+            startActivity(intent)
+        }
     }
 
     companion object {
