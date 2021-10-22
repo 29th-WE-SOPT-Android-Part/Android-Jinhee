@@ -7,6 +7,10 @@
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.15857605177993528" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.11" />
+        <entry key="app/src/main/res/layout/fragment_follower.xml" value="0.13229166666666667" />
+        <entry key="app/src/main/res/layout/fragment_repo.xml" value="0.11822916666666666" />
+        <entry key="app/src/main/res/layout/item_follower_list.xml" value="0.13229166666666667" />
+        <entry key="app/src/main/res/layout/item_repo_list.xml" value="0.13229166666666667" />
       </map>
     </option>
   </component>
