@@ -9,7 +9,149 @@
 
 ## Level 1
 
+1. 팔로워/ 레포 프래그먼트 2개 생성
 
+2. HomeActivity 에 팔로워/레포 버튼 각각 생성
+
+   1. 버튼 클릭 시 프래그먼트 이동
+
+   ```kotlin
+   private fun onClickBtn() {
+           val followerFragment = FollowerFragment()
+           val repoFragment = RepoFragment()
+   
+           supportFragmentManager.beginTransaction()
+               .add(R.id.fragment_home_rcv, followerFragment)
+               .commit()
+   
+           binding.btnFollowerList.setOnClickListener {
+               supportFragmentManager.beginTransaction()
+                   .replace(R.id.fragment_home_rcv, followerFragment)
+                   .commit()
+           }
+           binding.btnRepoList.setOnClickListener {
+               supportFragmentManager.beginTransaction()
+                   .replace(R.id.fragment_home_rcv, repoFragment)
+                   .commit()
+           }
+       }
+   ```
+
+   
+
+3. data class 생성
+
+   ```kotlin
+   data class FollowerInfo(
+       val userProfile: String,
+       val userName: String,
+       val userInfo: String,
+   )
+   ```
+
+   1. item : DataBinding으로 구현
+
+   - Item_follower_list.xml
+
+   ```xml
+   <data>
+           <variable name="followerData" type="com.example.sopt29.FollowerInfo" />
+       </data>
+   
+   <TextView
+               android:id="@+id/text_follower_name"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="10dp"
+               android:textSize="15sp"
+               android:textStyle="bold"
+               android:textColor="@color/white"
+               android:layout_marginTop="20dp"
+               app:layout_constraintTop_toTopOf="parent"
+               app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toEndOf="@id/img_follower_profile"
+               tools:text="@{followerData.userName}" />
+   
+   ```
+
+   - FollowerAdapter.kt
+
+   ```kotlin
+   class FollowingUserViewHolder(
+           private val binding: ItemFollowerListBinding
+       ) : RecyclerView.ViewHolder(binding.root) {
+           fun onBind(followerInfo: FollowerInfo) {
+               binding.followerData = followerInfo
+           }
+       }
+   ```
+
+   
+
+4. 각각의 리사이클러뷰 구현
+
+   ```kotlin
+   private fun setFollowingAdapter() {
+           // 1. 우리가 사용할 어뎁터의 초기 값을 넣어준다
+           followerAdapter = FollowerAdapter()
+   
+           // 2. RecyclerView 에 어뎁터를 우리가 만든 어뎁터로 만들기
+           binding.rcvFollowerList.adapter = followerAdapter
+       }
+   
+       private fun setFollowingListData() {
+           followerAdapter.followerList.addAll(
+               listOf<FollowerInfo>(
+                   FollowerInfo(
+                       userProfile = "",
+                       userName = "jinhee",
+                       userInfo = "jinheejijinheenheejinheejinheejinheejinhee"
+                   ),
+                   FollowerInfo(
+                       userProfile = "",
+                       userName = "hello",
+                       userInfo = "hellohellohellohellohellohellohellohellohello"
+                   ),
+                   FollowerInfo(
+                       userProfile = "",
+                       userName = "Hi",
+                       userInfo = "jinheejijinheenheejinheejinheejinheejinhee"
+                   ),
+                   FollowerInfo(
+                       userProfile = "",
+                       userName = "Luulu",
+                       userInfo = "jinheejijinheenheejinheejinheejinheejinhee"
+                   ),
+                   FollowerInfo(
+                       userProfile = "",
+                       userName = "kotlin",
+                       userInfo = "jinheejijinheenheejinheejinheejinheejinhee"
+                   ),
+                   FollowerInfo(
+                       userProfile = "",
+                       userName = "java",
+                       userInfo = "jinheejijinheenheejinheejinheejinheejinhee"
+                   ),
+               )
+           )
+   
+           followerAdapter.notifyDataSetChanged()
+       }
+   ```
+   
+
+5. layoutManager :: default - LinearLayoutManager 
+
+    - 레포지토리 리사이클러뷰 : GridLayoutManager
+
+    ```kotlin
+    binding.rcvRepoList.layoutManager = GridLayoutManager(context,2)
+    repoListAdapter.notifyDataSetChanged()
+    ```
+
+
+
+<br><br>
 
 
 # 📍 Seminar_1 
