@@ -1,6 +1,16 @@
 # Android-Jinhee
 ![github_한진희_ver1-8](https://user-images.githubusercontent.com/70698151/135753732-745e05f0-2fcc-45cd-a9ed-9cbafce344f5.png)
 
+# 📍 Seminar_2
+
+## 🎥 실행영상
+
+<video width="150" src="https://user-images.githubusercontent.com/53166299/138468967-20377e05-2e94-4432-b216-d15bb31b7783.mov"></video>
+
+## Level 1
+
+
+
 
 # 📍 Seminar_1 
 
