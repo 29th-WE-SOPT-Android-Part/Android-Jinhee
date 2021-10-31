@@ -1,4 +1,4 @@
-package com.example.sopt29
+package com.example.sopt29.ui.profile
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

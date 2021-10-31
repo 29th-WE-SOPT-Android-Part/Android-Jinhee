@@ -1,13 +1,11 @@
-package com.example.sopt29
+package com.example.sopt29.ui.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.sopt29.databinding.FragmentFollowerBinding
 import com.example.sopt29.databinding.FragmentRepoBinding
 
 class RepoFragment : Fragment() {
@@ -70,7 +68,7 @@ class RepoFragment : Fragment() {
             )
         )
 
-        binding.rcvRepoList.layoutManager = GridLayoutManager(context,2)
+//        binding.rcvRepoList.layoutManager = GridLayoutManager(context,2)
         repoListAdapter.notifyDataSetChanged()
     }
 

@@ -1,10 +1,10 @@
-package com.example.sopt29
+package com.example.sopt29.ui.profile
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.sopt29.R
 import com.example.sopt29.databinding.ItemFollowerListBinding
-import com.example.sopt29.FollowerInfo
 
 // 1. Adapter 는 RecyclerView.Adapter 를 상속받는다
 // <ViewHolder> 부분으로 해당 어뎁터가 어떤 ViewHolder 로 변경하는지 알려준다
@@ -35,6 +35,7 @@ class FollowerAdapter : RecyclerView.Adapter<FollowerAdapter.FollowingUserViewHo
         private val binding: ItemFollowerListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(followerInfo: FollowerInfo) {
+            binding.imgFollowerProfile.setImageResource(R.drawable.group_814)
             binding.followerData = followerInfo
         }
     }

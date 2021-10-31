@@ -1,4 +1,4 @@
-package com.example.sopt29
+package com.example.sopt29.ui.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -46,32 +46,32 @@ class FollowerFragment : Fragment() {
         followerAdapter.followerList.addAll(
             listOf<FollowerInfo>(
                 FollowerInfo(
-                    userProfile = "",
+//                    userProfile = "",
                     userName = "jinhee",
                     userInfo = "jinheejijinheenheejinheejinheejinheejinhee"
                 ),
                 FollowerInfo(
-                    userProfile = "",
+//                    userProfile = "",
                     userName = "hello",
                     userInfo = "hellohellohellohellohellohellohellohellohello"
                 ),
                 FollowerInfo(
-                    userProfile = "",
+//                    userProfile = "",
                     userName = "Hi",
                     userInfo = "jinheejijinheenheejinheejinheejinheejinhee"
                 ),
                 FollowerInfo(
-                    userProfile = "",
+//                    userProfile = "",
                     userName = "Luulu",
                     userInfo = "jinheejijinheenheejinheejinheejinheejinhee"
                 ),
                 FollowerInfo(
-                    userProfile = "",
+//                    userProfile = "",
                     userName = "kotlin",
                     userInfo = "jinheejijinheenheejinheejinheejinheejinhee"
                 ),
                 FollowerInfo(
-                    userProfile = "",
+//                    userProfile = "",
                     userName = "java",
                     userInfo = "jinheejijinheenheejinheejinheejinheejinhee"
                 ),
