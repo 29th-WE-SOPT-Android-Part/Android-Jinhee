@@ -186,5 +186,55 @@ https://user-images.githubusercontent.com/53166299/139589462-50abf5dd-0351-4836-
 ## Level 3_1
 
 - DataBinding 활용
+- 
+
+3. data class 생성
+
+   ```kotlin
+   data class FollowerInfo(
+       val userProfile: String,
+       val userName: String,
+       val userInfo: String,
+   )
+   ```
+
+   1. item : DataBinding으로 구현
+
+   - Item_follower_list.xml
+
+   ```xml
+   <data>
+           <variable name="followerData" type="com.example.sopt29.FollowerInfo" />
+       </data>
+   
+   <TextView
+               android:id="@+id/text_follower_name"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="10dp"
+               android:textSize="15sp"
+               android:textStyle="bold"
+               android:textColor="@color/white"
+               android:layout_marginTop="20dp"
+               app:layout_constraintTop_toTopOf="parent"
+               app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toEndOf="@id/img_follower_profile"
+               tools:text="@{followerData.userName}" />
+   
+   ```
+
+   - FollowerAdapter.kt
+
+   ```kotlin
+   class FollowingUserViewHolder(
+           private val binding: ItemFollowerListBinding
+       ) : RecyclerView.ViewHolder(binding.root) {
+           fun onBind(followerInfo: FollowerInfo) {
+               binding.followerData = followerInfo
+           }
+       }
+   ```
+
+   
 
 <br><br>
