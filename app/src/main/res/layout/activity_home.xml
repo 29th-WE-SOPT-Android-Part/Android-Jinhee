@@ -89,7 +89,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/mbti"
-            app:layout_constraintBottom_toTopOf="@id/btn_go_github"
             app:layout_constraintStart_toStartOf="@id/tv_home_name"
             app:layout_constraintTop_toBottomOf="@id/tv_home_age" />
 
@@ -106,43 +105,61 @@
             android:id="@+id/btn_go_github"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="JinheeGitHub"
+            android:text="Jinhee\nGitHub"
             android:background="@drawable/background_edittext_r15_yellow"
-            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_img"
+            app:layout_constraintBottom_toBottomOf="@id/iv_img"
+            />
+        <TextView
+            android:id="@+id/tv_home_introduce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:textAlignment="center"
+            android:text="@string/introduce"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_home_mbti"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_follower_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_home"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_home_mbti"
-            app:layout_constraintBottom_toTopOf="@id/guideline_home"
+            app:layout_constraintEnd_toStartOf="@id/btn_repo_list"
+            android:text="@string/text_follower_list"
+            android:textColor="@color/white"
+            android:background="@color/black"
             />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_repo_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_home"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btn_follower_list"
+            android:text="@string/text_repo_list"
+            android:textColor="@color/black"
+            android:background="@color/white"/>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.6" />
+            app:layout_constraintGuide_percent="0.5" />
 
-        <ScrollView
-            android:id="@+id/scrollview"
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragment_home_rcv"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/guideline_home"
             app:layout_constraintBottom_toBottomOf="parent"
-            >
-            <TextView
-                android:id="@+id/tv_home_introduce"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|top"
-                android:textAlignment="center"
-                android:text="@string/scroll_introduce"
-            />
+            app:layout_constraintTop_toBottomOf="@id/guideline_home" />
 
-
-        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

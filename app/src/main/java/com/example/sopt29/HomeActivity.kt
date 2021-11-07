@@ -18,12 +18,33 @@ class HomeActivity : AppCompatActivity() {
         Log.d(CURRENT_ACTIVITY, "Called onStart")
 
         goGitHub()
+        onClickBtn()
     }
 
     fun goGitHub(){
         binding.btnGoGithub.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/HJinhee"))
             startActivity(intent)
+        }
+    }
+
+    private fun onClickBtn() {
+        val followerFragment = FollowerFragment()
+        val repoFragment = RepoFragment()
+
+        supportFragmentManager.beginTransaction()
+            .add(R.id.fragment_home_rcv, followerFragment)
+            .commit()
+
+        binding.btnFollowerList.setOnClickListener {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_home_rcv, followerFragment)
+                .commit()
+        }
+        binding.btnRepoList.setOnClickListener {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_home_rcv, repoFragment)
+                .commit()
         }
     }
 
