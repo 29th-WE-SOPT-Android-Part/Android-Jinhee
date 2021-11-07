@@ -8,5 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#FFEB3B</color>
+    <color name="dark_gray">#828282</color>
     <color name="gray">#B4B2B2</color>
+    <color name="light_gray">#d0d0d0</color>
+    <color name="bright_gray">#f2f2f2</color>
+    <color name="medium_pink">#f658a6</color>
+    <color name="butterscotch">#fab24c</color>
+    <color name="bubblegum">#fa79b0</color>
 </resources>

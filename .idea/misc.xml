@@ -3,14 +3,35 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-hdpi/background_btn_r5_brightgray.xml" value="0.10925925925925926" />
+        <entry key="app/src/main/res/drawable-hdpi/background_btn_r5_butterscotch.xml" value="0.1771689497716895" />
+        <entry key="app/src/main/res/drawable-hdpi/selector_btn_butter_r5.xml" value="0.1771689497716895" />
+        <entry key="app/src/main/res/drawable/background_btn_r5_pink.xml" value="0.12222222222222222" />
+        <entry key="app/src/main/res/drawable/background_edittext_r15_yellow.xml" value="0.14479166666666668" />
         <entry key="app/src/main/res/drawable/background_edittext_r20_yellow.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/background_edittext_r5_gray.xml" value="0.14479166666666668" />
+        <entry key="app/src/main/res/drawable/background_edittext_r5_pink.xml" value="0.14479166666666668" />
+        <entry key="app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1771689497716895" />
+        <entry key="app/src/main/res/drawable/ic_home_24.xml" value="0.1771689497716895" />
+        <entry key="app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.1771689497716895" />
+        <entry key="app/src/main/res/drawable/ic_img_github.xml" value="0.14479166666666668" />
+        <entry key="app/src/main/res/drawable/selector_camera.xml" value="0.1771689497716895" />
+        <entry key="app/src/main/res/drawable/selector_et_focus_r5.xml" value="0.14479166666666668" />
+        <entry key="app/src/main/res/drawable/selector_home.xml" value="0.1771689497716895" />
+        <entry key="app/src/main/res/drawable/selector_profile.xml" value="0.1771689497716895" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.165" />
-        <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.15857605177993528" />
-        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.11" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.10555555555555556" />
+        <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/fragment_camera.xml" value="0.14351851851851852" />
         <entry key="app/src/main/res/layout/fragment_follower.xml" value="0.13229166666666667" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.10555555555555556" />
+        <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.10555555555555556" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.125" />
         <entry key="app/src/main/res/layout/fragment_repo.xml" value="0.11822916666666666" />
         <entry key="app/src/main/res/layout/item_follower_list.xml" value="0.13229166666666667" />
         <entry key="app/src/main/res/layout/item_repo_list.xml" value="0.13229166666666667" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.14351851851851852" />
       </map>
     </option>
   </component>

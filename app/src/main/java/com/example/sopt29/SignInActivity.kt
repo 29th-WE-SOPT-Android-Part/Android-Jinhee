@@ -51,14 +51,13 @@ class SignInActivity : AppCompatActivity() {
                     .show()
             } else {
                 Toast.makeText(this@SignInActivity, "${userId.toString()} 님 환영합니다.", Toast.LENGTH_SHORT).show()
-                startHomeActivity()
+                startMainActivity()
             }
         }
     }
 
-    private fun startHomeActivity(){
-        //HomeActivity로 이동
-        val intent = Intent(this@SignInActivity, HomeActivity::class.java)
+    private fun startMainActivity(){
+        val intent = Intent(this@SignInActivity, MainActivity::class.java)
         startActivity(intent)
     }
 

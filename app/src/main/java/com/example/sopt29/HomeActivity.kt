@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.example.sopt29.databinding.ActivityHomeBinding
+import com.example.sopt29.ui.profile.FollowerFragment
+import com.example.sopt29.ui.profile.RepoFragment
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
