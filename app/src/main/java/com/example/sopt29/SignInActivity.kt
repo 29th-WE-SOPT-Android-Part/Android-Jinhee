@@ -7,7 +7,13 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import com.example.sopt29.api.ApiService
+import com.example.sopt29.api.request.RequestSignIn
+import com.example.sopt29.api.response.ResponseSignIn
 import com.example.sopt29.databinding.ActivitySignInBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SignInActivity : AppCompatActivity() {
 
@@ -50,8 +56,35 @@ class SignInActivity : AppCompatActivity() {
                 Toast.makeText(this@SignInActivity, "로그인 실패. 아이디/비밀번호를 확인해주세요!", Toast.LENGTH_SHORT)
                     .show()
             } else {
-                Toast.makeText(this@SignInActivity, "${userId.toString()} 님 환영합니다.", Toast.LENGTH_SHORT).show()
-                startMainActivity()
+                val requestSignIn = RequestSignIn(
+                    userId.toString(),
+                    userPw.toString()
+                )
+
+                val call: Call<ResponseSignIn> = ApiService.soptService.postSingIn(requestSignIn)
+
+                call.enqueue(object: Callback<ResponseSignIn> {
+                    override fun onResponse(
+                        call: Call<ResponseSignIn>,
+                        response: Response<ResponseSignIn>
+                    ) {
+                        if(response.isSuccessful) {
+                            val data = response.body()?.data
+                            Toast.makeText(this@SignInActivity, "${data?.name} 님 환영합니다.", Toast.LENGTH_SHORT).show()
+                            startMainActivity()
+                        } else {
+                            Log.d("server connect : SignIn", "error")
+                            Log.d("server connect : SignIn", "$response.errorBody()")
+                            Log.d("server connect : SignIn", response.message())
+                            Log.d("server connect : SignIn", "${response.code()}")
+                            Toast.makeText(this@SignInActivity, "로그인 실패", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<ResponseSignIn>, t: Throwable) {
+                        Toast.makeText(this@SignInActivity, "로그인 실패", Toast.LENGTH_SHORT).show()
+                    }
+                })
             }
         }
     }
