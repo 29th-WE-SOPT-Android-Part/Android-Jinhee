@@ -1,6 +1,211 @@
 # Android-Jinhee
 ![github_한진희_ver1-8](https://user-images.githubusercontent.com/70698151/135753732-745e05f0-2fcc-45cd-a9ed-9cbafce344f5.png)
 
+# 📍 Seminar_4
+
+## 🎥 실행영상
+
+https://user-images.githubusercontent.com/53166299/141446347-4d1ccae7-ab44-4839-9df1-ed98b3ed399c.mov
+
+
+## Level 1
+### postman
+1. 회원가입
+<img width="1161" alt="스크린샷 2021-11-12 오후 6 22 00" src="https://user-images.githubusercontent.com/53166299/141445828-920d7f8e-74bf-4b65-ba97-021913891038.png">
+
+2. 로그인
+<img width="1232" alt="스크린샷 2021-11-12 오후 6 24 09" src="https://user-images.githubusercontent.com/53166299/141445856-f977fa8c-3c88-4de1-b163-720e9802ac1c.png">
+
+### 서버 연결
+1. ApiService
+
+   ```kotlin
+   object ApiService {
+       private const val BASE_URL = "https://asia-northeast3-we-sopt-29.cloudfunctions.net/api"
+
+       private val retrofit: Retrofit = Retrofit.Builder()
+           .baseUrl(BASE_URL)
+           .addConverterFactory(GsonConverterFactory.create())
+           .build()
+
+       val soptService: SoptService = retrofit.create(SoptService::class.java)
+   }
+   ```               
+
+
+
+2. Client Retrofit
+
+   ```kotlin
+   interface SoptService {
+       @Headers("Content-Type:application/json")
+       @POST("/user/signup")
+       fun postSignUp(
+           @Body body: RequestSignUp
+       ) : Call<ResponseSignUp>
+
+       @Headers("Content-Type:application/json")
+       @POST("/user/login")
+       fun postSingIn(
+           @Body body: RequestSignIn
+       ) : Call<ResponseSignIn>
+   }
+   ```
+
+
+
+3. loginData - response / request
+
+   ```kotlin
+   data class ResponseSignIn (
+       val status: Int,
+       val success: Boolean,
+       val message: String,
+       val data: Data
+   )  {
+       data class Data(
+           val id: Int,
+           val name: String,
+           val email: String,
+       )
+   }
+   ```
+
+   ```kotlin
+   data class RequestSignIn (
+       val email: String,
+       val password: String,
+   )
+   ```
+
+
+
+4. signUpData - response, request
+
+   ```kotlin
+   data class ResponseSignUp (
+       val status: Int,
+       val success: Boolean,
+       val message: String,
+       val data: Data
+   )  {
+       data class Data(
+           val id: Int,
+           val name: String,
+           val email: String,
+           val password: String
+       )
+   }
+   ```
+
+   ```kotlin
+   data class RequestSignUp (
+       val email: String,
+       val password: String,
+       val name: String
+   )
+   ```
+
+
+
+4. 회원가입 로직
+
+   ```kotlin
+   val userName = binding.etSignupName.text
+               val userId = binding.etSignupId.text
+               val userPw = binding.etSignupPw.text
+               if (userName.isNullOrBlank() || userId.isNullOrBlank() || userPw.isNullOrBlank()) {
+                   Toast.makeText(this@SignUpActivity, "입력되지 않은 정보가 있습니다.", Toast.LENGTH_SHORT)
+                       .show()
+               } else {
+                   val requestSignUp = RequestSignUp(
+                       userPw.toString(),
+                       userName.toString(),
+                       userPw.toString()
+                   )
+   
+                   val call: Call<ResponseSignUp> = ApiService.soptService.postSignUp(requestSignUp)
+   
+                   call.enqueue(object: Callback<ResponseSignUp> {
+                       override fun onResponse(
+                           call: Call<ResponseSignUp>,
+                           response: Response<ResponseSignUp>
+                       ) {
+                           if(response.isSuccessful) {
+                               val data = response.body()
+                               Toast.makeText(this@SignUpActivity, data?.message, Toast.LENGTH_SHORT).show()
+   
+                               val intent = Intent(this@SignUpActivity, MainActivity::class.java)
+                               intent.putExtra("userName", userName.toString())
+                                   .putExtra("userId", userId.toString())
+                                   .putExtra("userPw", userPw.toString())
+   
+                               setResult(
+                                   RESULT_OK,
+                                   intent
+                               )   //setResult() 메소드로 결과를 저장 -> 성공 : RESULT_OK, 실패 : RESULT_CANCEL
+   
+   
+                           } else {
+                               Toast.makeText(this@SignUpActivity, "회원가입 실패", Toast.LENGTH_SHORT).show()
+                           }
+                       }
+   
+                       override fun onFailure(call: Call<ResponseSignUp>, t: Throwable) {
+                           Toast.makeText(this@SignUpActivity, "회원가입 실패", Toast.LENGTH_SHORT).show()
+                       }
+                   })
+   
+                   finish()
+               }
+   ```
+
+   
+
+5. 로그인 로직
+
+   ```kotlin
+   val userId = binding.etLoginId.text
+               val userPw = binding.etLoginPw.text
+               if (userId.isNullOrBlank() || userPw.isNullOrBlank()) {
+                   Toast.makeText(this@SignInActivity, "로그인 실패. 아이디/비밀번호를 확인해주세요!", Toast.LENGTH_SHORT)
+                       .show()
+               } else {
+                   val requestSignIn = RequestSignIn(
+                       userId.toString(),
+                       userPw.toString()
+                   )
+   
+                   val call: Call<ResponseSignIn> = ApiService.soptService.postSingIn(requestSignIn)
+   
+                   call.enqueue(object: Callback<ResponseSignIn> {
+                       override fun onResponse(
+                           call: Call<ResponseSignIn>,
+                           response: Response<ResponseSignIn>
+                       ) {
+                           if(response.isSuccessful) {
+                               val data = response.body()?.data
+                               Toast.makeText(this@SignInActivity, "${data?.name} 님 환영합니다.", Toast.LENGTH_SHORT).show()
+                               startMainActivity()
+                           } else {
+                               Toast.makeText(this@SignInActivity, "로그인 실패", Toast.LENGTH_SHORT).show()
+                           }
+                       }
+   
+                       override fun onFailure(call: Call<ResponseSignIn>, t: Throwable) {
+                           Toast.makeText(this@SignInActivity, "로그인 실패", Toast.LENGTH_SHORT).show()
+                       }
+                   })
+               }
+   ```
+
+   
+
+
+
+
+<br><br>
+
 # 📍 Seminar_3
 
 ## 🎥 실행영상
